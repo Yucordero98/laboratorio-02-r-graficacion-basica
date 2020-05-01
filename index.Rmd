@@ -57,19 +57,21 @@ print(ca_covid19)
 2. (10%) Genere un resumen de los datos con la función  ```summary() ```.
 
 ```{r}
-
+summary(ca_covid19)
 ```
 
 3. (10%) Con la función ```barplot()```, genere un gráfico de barras de los casos confirmados.
 
 ```{r}
-
+barplot(height = ca_covid19$confirmados)
 ```
 
 4. (10%) Con la función  ```order()```, ordene el data frame por cantidad de casos confirmados y genere de nuevo el gráfico.
 
 ```{r}
-
+confirmados.ordenado <- order(ca_covid19$confirmados, decreasing=TRUE)
+ca_covid19.confirmado <- ca_covid19[confirmados.ordenado,]
+barplot(height = ca_covid19.confirmado$confirmados)
 ```
 
 5. (10%) Incluya en el gráfico los siguientes componentes:
@@ -78,7 +80,11 @@ print(ca_covid19)
 - Titulo del gráfico.
 
 ```{r}
-
+barplot(height = ca_covid19.confirmado$confirmados,
+ names.arg=ca_covid19.confirmado$pais, 
+  xlab="Países", 
+  ylab="Cantidad de personas",   
+  main="Población de los países centroamericanos y República Dominicana",)
 ```
 
 6. Genere gráficos similares al del paso anterior para:
@@ -86,9 +92,33 @@ print(ca_covid19)
 - (25%) Casos fallecidos.
 
 ```{r}
+casosactivos.ordenado <- order(ca_covid19$activos, decreasing=TRUE)
 
+ca_covid19.casosactivos <- ca_covid19[casosactivos.ordenado,]
+
+barplot(height = ca_covid19.casosactivos$activos)
+
+barplot(height = ca_covid19.casosactivos$activos,
+        
+ names.arg=ca_covid19.casosactivos$pais, 
+  xlab="Países", 
+  ylab="Casos activos",   
+  main="Población de los países centroamericanos y República Dominicana",)
 ```
 
+
 ```{r}
+cantidaddefallecidos.ordenados <- order(ca_covid19$fallecidos, decreasing=TRUE)
+
+ca_covid19.cantidaddefallecidos <- ca_covid19[cantidaddefallecidos.ordenados,]
+
+barplot(height = ca_covid19.cantidaddefallecidos$fallecidos)
+
+barplot(height = ca_covid19.cantidaddefallecidos$fallecidos,
+        
+ names.arg=ca_covid19.cantidaddefallecidos$pais, 
+  xlab="Países", 
+  ylab="Cantidad de fallecidos",   
+  main="Población de los países centroamericanos y República Dominicana",)
 
 ```
